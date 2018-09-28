@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js",
-    "lint": "node ./node_modules/.bin/eslint **/*.js"
+    "lint": "eslint src/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,11 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "joi": "^13.6.0",
     "morgan": "^1.9.1",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "sequelize": "^4.39.0",
+    "sqlite3": "^4.0.2"
   },
   "devDependencies": {
     "eslint": "^5.6.0",

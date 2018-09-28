@@ -1,29 +1,41 @@
 <template>
-    <div class="register">
-         <h1>Register page</h1>
-
-        <input
+  <v-container fluid>
+    <v-layout row>
+      <v-flex xs12>
+        <div class="white">
+          <v-toolbar flat dense class="cyan" dark>
+            <v-toolbar-title>
+              Register
+            </v-toolbar-title>
+          </v-toolbar>
+        </div>  
+      </v-flex>
+    </v-layout>
+    <v-layout row class="mt-5"> 
+      <v-flex xs12 sm6 offset-sm3>
+        <div class="error" v-html="error"></div>
+        
+        <v-text-field
         type="email"
-        name="email"
         v-model="email"
-        placeholder="Enter email"
+        name="email"
+        solo
         >
+        </v-text-field>
 
-        <br>
-
-        <input
+        <v-text-field
         type="password"
-        name="password"
         v-model="password"
-        placeholder="Enter password"
+        name="password"
+        solo
         >
+        </v-text-field>
 
-        <br>
+        <v-btn @click="register" outline color="indigo">Register</v-btn>
 
-        <button
-        @click="register"
-        >Register</button>
-    </div>
+      </v-flex>    
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -33,20 +45,27 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      error: ""
     };
   },
   methods: {
     async register() {
-      const response = await AuthService.register({
-        email: this.email,
-        password: this.password
-      });
-      console.log(response.data);
+      try {
+        await AuthService.register({
+          email: this.email,
+          password: this.password
+        });
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.error {
+  color: red;
+}
 </style>
