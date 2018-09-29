@@ -24,15 +24,13 @@
       >
       </v-text-field>
 
-      <v-btn class="d-block mx-auto" @click="register" color="success">Singup</v-btn>
+      <v-btn class="d-block mx-auto" @click="login" color="success">SignIn</v-btn>
 
     </v-flex>    
   </v-layout>
 </template>
 
 <script>
-import AuthService from "@/services/AuthService";
-
 export default {
   data() {
     return {
@@ -42,9 +40,9 @@ export default {
     };
   },
   methods: {
-    async register() {
+    async login() {
       try {
-        await AuthService.register({
+        await AuthService.login({
           email: this.email,
           password: this.password
         });
@@ -56,5 +54,3 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
