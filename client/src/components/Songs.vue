@@ -1,5 +1,7 @@
 <template>
-    <v-layout row wrap class="pt-5">
+  <main>
+    <songs-search/>
+    <v-layout row wrap class="pt-2">
         <v-flex xs4 class="px-1" v-for="song in songs" :key="song.id">
             <v-card color="pink accent-3" class="white--text">
                 <v-layout row>
@@ -40,23 +42,29 @@
           </v-btn>
       </v-fab-transition>
     </v-layout>
+  </main>
 </template>
 
 <script>
 import SongsService from "@/services/SongsService";
+import SongsSearch from "@/components/SongsSearch";
 
 export default {
   components: {
-    Panel
+    SongsSearch
   },
   data() {
     return {
       songs: null
     };
   },
-  async mounted() {
-    // do a request to the backend for all the songs
-    this.songs = (await SongsService.index()).data;
+  watch: {
+    "$route.query.search": {
+      immediate: true,
+      async handler(value) {
+        this.songs = (await SongsService.index(value)).data;
+      }
+    }
   }
 };
 </script>
