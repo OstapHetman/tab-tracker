@@ -40,7 +40,7 @@ export default new Router({
     }
     ,
     {
-      path: '/songs/:id',
+      path: '/songs/:songId',
       name: 'song',
       component: Song
     }
