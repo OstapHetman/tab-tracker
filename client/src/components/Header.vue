@@ -21,8 +21,23 @@
           <v-btn flat to="/login" v-if="!$store.state.isUserLoggedIn">
             Sign In
           </v-btn>
+          <v-btn @click="logout" flat to="/" v-if="$store.state.isUserLoggedIn">
+            Logout
+          </v-btn>
         </v-toolbar-items>
       </v-toolbar>
     </v-flex>
   </v-layout>
 </template>
+
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch("setToken", null);
+      this.$store.dispatch("setUser", null);
+    }
+  }
+};
+</script>
+
