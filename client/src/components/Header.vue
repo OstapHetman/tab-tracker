@@ -9,9 +9,9 @@
           </router-link>
         </v-toolbar-title>
 
-        <!-- <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn flat>Browse</v-btn>
-        </v-toolbar-items> -->
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn flat to="/songs">Browse</v-btn>
+        </v-toolbar-items>
 
         <v-spacer></v-spacer>
         <v-toolbar-items>
