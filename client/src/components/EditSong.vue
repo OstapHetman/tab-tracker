@@ -1,7 +1,7 @@
 <template>
   <v-layout row class="pt-5" wrap>
      <v-flex xs12>
-      <h1 class="text-xs-center cyan--text mb-4">Create new Song</h1>
+      <h1 class="text-xs-center cyan--text mb-4">Edit song</h1>
     </v-flex>
     <v-flex xs5>
       <v-card color="white" class="cyan--text">
@@ -78,7 +78,7 @@
             {{error}}
           </v-alert>
 
-          <v-btn class="d-block mx-auto" @click="createSong" color="success">Create Song</v-btn>  
+          <v-btn class="d-block mx-auto" @click="save" color="success">Save Song</v-btn>  
     </v-flex>
   </v-layout>
 </template>
@@ -104,7 +104,7 @@ export default {
     };
   },
   methods: {
-    async createSong() {
+    async save() {
       const areAllFieldsFilledIn = Object.keys(this.song).every(
         key => !!this.song[key]
       );
@@ -112,15 +112,22 @@ export default {
         this.error = "Please fill in all the required fields";
         return;
       }
-      // call API
+
+      const songId = this.$store.state.route.params.songId;
       try {
-        await SongService.post(this.song);
-        this.$router.push({
-          name: "songs"
-        });
+        await SongService.put(this.song);
+        this.$router.push(`/songs/${songId}`);
       } catch (err) {
         console.log(err);
       }
+    }
+  },
+  async mounted() {
+    try {
+      const songId = this.$store.state.route.params.songId;
+      this.song = (await SongService.show(songId)).data;
+    } catch (err) {
+      console.log(err);
     }
   }
 };

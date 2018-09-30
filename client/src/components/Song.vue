@@ -49,7 +49,7 @@
             single-line
             v-model="song.lyrics"
             no-resize
-            disabled
+            readonly
           ></v-textarea>
         </v-form>
       </v-card>
@@ -71,11 +71,26 @@
             single-line
             v-model="song.tab"
             no-resize
-            disabled
+            readonly
           ></v-textarea>
         </v-form>
       </v-card>
     </v-flex>
+    <!-- Floating Button -->
+    <v-fab-transition>
+      <v-btn
+        color="indigo"
+        dark
+        fab
+        fixed
+        bottom
+        right
+        :to="'/songs/' + song.id + '/edit'"
+      >
+        <v-icon>edit</v-icon>
+        <v-icon>close</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </v-layout>
 </template>
 
@@ -102,5 +117,14 @@ export default {
 <style>
 iframe {
   width: 100%;
+}
+textarea {
+  width: 100%;
+  font-family: monospace;
+  border: none;
+  height: 600px;
+  border-style: none;
+  border-color: transparent;
+  overflow: auto;
 }
 </style>
