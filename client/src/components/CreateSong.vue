@@ -78,7 +78,7 @@
             {{error}}
           </v-alert>
 
-          <v-btn class="d-block mx-auto" @click="createSong" color="success">Create Song</v-btn>  
+          <v-btn class="d-block mx-auto mt-4" @click="createSong" color="success">Create Song</v-btn>  
     </v-flex>
   </v-layout>
 </template>

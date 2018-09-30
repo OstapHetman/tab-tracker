@@ -1,5 +1,5 @@
 <template>
-  <v-layout row wrap class="pt-5">
+  <v-layout row wrap class="pt-5 single-song">
     <!-- Song Metadata -->
     <v-flex xs4>
       <v-card>
@@ -115,10 +115,10 @@ export default {
 </script>
 
 <style>
-iframe {
+.single-song iframe {
   width: 100%;
 }
-textarea {
+.single-song textarea {
   width: 100%;
   font-family: monospace;
   border: none;
