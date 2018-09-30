@@ -1,7 +1,19 @@
 <template>
   <v-card color="blue-grey lighten-2" class="white--text">
-    <v-card-title primary-title>
-      <div class="headline">{{ title }}</div>
+    <v-card-title primary-title style="position: relative">
+      <div class="headline" >{{ title }}</div >
+      <v-btn
+        absolute
+        dark
+        fab
+        top
+        small
+        right
+        color="cyan"
+        to="songs/add"
+      >
+        <v-icon>add</v-icon>
+      </v-btn>
     </v-card-title>
     <v-card-text>
       <slot>No slot content defined.</slot>
