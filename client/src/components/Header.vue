@@ -4,7 +4,7 @@
       <v-toolbar fixed class="cyan" dark>
         <v-toolbar-side-icon></v-toolbar-side-icon>
         <v-toolbar-title>
-          <router-link to="/" tag="span" style="cursor: pointer">
+          <router-link to="/songs" tag="span" style="cursor: pointer">
             TabTracker
           </router-link>
         </v-toolbar-title>
@@ -21,7 +21,7 @@
           <v-btn flat to="/login" v-if="!$store.state.isUserLoggedIn">
             Sign In
           </v-btn>
-          <v-btn @click="logout" flat to="/" v-if="$store.state.isUserLoggedIn">
+          <v-btn @click="logout" flat to="/login" v-if="$store.state.isUserLoggedIn">
             Logout
           </v-btn>
         </v-toolbar-items>
